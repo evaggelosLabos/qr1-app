@@ -6,11 +6,11 @@ const QRCodeGenerator = () => {
   const [email, setEmail] = useState("info@yourcompany.com");
   const [website, setWebsite] = useState("https://autoplan.gr/el/");
 
-  // Use the new deployed Render URL
+  // Use your Render deployment URL
   const deployedURL = "https://qr1-app.onrender.com";
 
-  // Generate the hosted contact page URL with parameters
-  const contactPageURL = `${deployedURL}/contactpage/contact.html?phone=${encodeURIComponent(phone)}&email=${encodeURIComponent(email)}&website=${encodeURIComponent(website)}`;
+  // Default language is English
+  const contactPageURL = `${deployedURL}/contactpage/contact.html?phone=${encodeURIComponent(phone)}&email=${encodeURIComponent(email)}&website=${encodeURIComponent(website)}&lang=en`;
 
   return (
     <div>
@@ -26,3 +26,4 @@ const QRCodeGenerator = () => {
 };
 
 export default QRCodeGenerator;
+

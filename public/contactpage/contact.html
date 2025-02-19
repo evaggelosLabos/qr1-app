@@ -4,73 +4,80 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 20px;
-            background-color: #f8f9fa;
-        }
-        h2 {
-            color: #333;
-        }
-        .container {
-            max-width: 400px;
-            margin: 0 auto;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        .contact-link {
-            display: block;
-            text-decoration: none;
-            font-size: 18px;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 8px;
-            color: white;
-            font-weight: bold;
-        }
-        .phone { background: #28a745; }
-        .email { background: #007bff; }
-        .website { background: #fd7e14; }
-    </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Contact Us</h2>
-        <a id="phone" class="contact-link phone" style="display:none"></a>
-        <a id="email" class="contact-link email" style="display:none"></a>
-        <a id="website" class="contact-link website" style="display:none" target="_blank"></a>
-    </div>
+    <h2 id="title">Contact Us</h2>
+    <p><strong id="phone-label">Phone:</strong> <a id="phone"></a></p>
+    <p><strong id="email-label">Email:</strong> <a id="email"></a></p>
+    <p><strong id="website-label">Website:</strong> <a id="website"></a></p>
+
+    <h3>Select Language:</h3>
+    <button onclick="setLanguage('en')">English 🇬🇧</button>
+    <button onclick="setLanguage('de')">Deutsch 🇩🇪</button>
+    <button onclick="setLanguage('it')">Italiano 🇮🇹</button>
+    <button onclick="setLanguage('el')">Ελληνικά 🇬🇷</button>
 
     <script>
-        // Read URL parameters
+        // Get URL parameters
         const urlParams = new URLSearchParams(window.location.search);
         const phone = urlParams.get("phone");
         const email = urlParams.get("email");
         const website = urlParams.get("website");
+        let lang = urlParams.get("lang") || "en"; // Default to English
 
-        // Dynamically update contact info
-        if (phone) {
-            document.getElementById("phone").innerText = `📞 Call Us: ${phone}`;
-            document.getElementById("phone").href = `tel:${phone}`;
-            document.getElementById("phone").style.display = "block";
+        // Populate contact info
+        document.getElementById("phone").innerText = phone;
+        document.getElementById("phone").href = "tel:" + phone;
+        document.getElementById("email").innerText = email;
+        document.getElementById("email").href = "mailto:" + email;
+        document.getElementById("website").innerText = website;
+        document.getElementById("website").href = website;
+
+        // Translation object
+        const translations = {
+            en: {
+                title: "Contact Us",
+                phone: "Phone:",
+                email: "Email:",
+                website: "Website:"
+            },
+            de: {
+                title: "Kontaktieren Sie uns",
+                phone: "Telefon:",
+                email: "E-Mail:",
+                website: "Webseite:"
+            },
+            it: {
+                title: "Contattaci",
+                phone: "Telefono:",
+                email: "E-mail:",
+                website: "Sito web:"
+            },
+            el: {
+                title: "Επικοινωνήστε μαζί μας",
+                phone: "Τηλέφωνο:",
+                email: "Ηλεκτρονικό Ταχυδρομείο:",
+                website: "Ιστοσελίδα:"
+            }
+        };
+
+        // Function to change language
+        function setLanguage(selectedLang) {
+            lang = selectedLang;
+            window.history.replaceState(null, "", `?phone=${phone}&email=${email}&website=${website}&lang=${lang}`);
+            applyTranslations();
         }
 
-        if (email) {
-            document.getElementById("email").innerText = `✉️ Email Us: ${email}`;
-            document.getElementById("email").href = `mailto:${email}`;
-            document.getElementById("email").style.display = "block";
+        // Apply translations based on selected language
+        function applyTranslations() {
+            document.getElementById("title").innerText = translations[lang].title;
+            document.getElementById("phone-label").innerText = translations[lang].phone;
+            document.getElementById("email-label").innerText = translations[lang].email;
+            document.getElementById("website-label").innerText = translations[lang].website;
         }
 
-        if (website && website.startsWith("http")) {
-            document.getElementById("website").innerText = `🌍 Visit Website`;
-            document.getElementById("website").href = website;
-            document.getElementById("website").style.display = "block";
-        }
+        // Apply initial language setting
+        applyTranslations();
     </script>
 </body>
 </html>
