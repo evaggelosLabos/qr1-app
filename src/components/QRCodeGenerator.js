@@ -10,7 +10,7 @@ const QRCodeGenerator = () => {
   const deployedURL = "https://qr1-app.onrender.com";
 
   // Generate the hosted contact page URL with parameters
-  const contactPageURL = `${deployedURL}/contact-page/contact.html?phone=${encodeURIComponent(phone)}&email=${encodeURIComponent(email)}&website=${encodeURIComponent(website)}`;
+  const contactPageURL = `${deployedURL}/contactpage/contact.html?phone=${encodeURIComponent(phone)}&email=${encodeURIComponent(email)}&website=${encodeURIComponent(website)}`;
 
   return (
     <div>
