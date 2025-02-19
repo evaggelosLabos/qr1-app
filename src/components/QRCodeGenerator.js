@@ -6,8 +6,8 @@ const QRCodeGenerator = () => {
   const [email, setEmail] = useState("info@yourcompany.com");
   const [website, setWebsite] = useState("https://autoplan.gr/el/");
 
-  // Use the deployed Render URL
-  const deployedURL = "https://qr-app-4fgx.onrender.com";
+  // Use the new deployed Render URL
+  const deployedURL = "https://qr1-app.onrender.com";
 
   // Generate the hosted contact page URL with parameters
   const contactPageURL = `${deployedURL}/contact-page/contact.html?phone=${encodeURIComponent(phone)}&email=${encodeURIComponent(email)}&website=${encodeURIComponent(website)}`;
