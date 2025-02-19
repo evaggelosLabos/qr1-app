@@ -4,18 +4,103 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .contact-info {
+            text-align: left;
+            font-size: 18px;
+        }
+
+        .contact-info p {
+            margin: 10px 0;
+        }
+
+        .contact-link {
+            display: block;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            color: white;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .phone { background: #28a745; }
+        .email { background: #007bff; }
+        .website { background: #fd7e14; }
+
+        .contact-link:hover {
+            opacity: 0.8;
+        }
+
+        .lang-buttons {
+            margin-top: 15px;
+        }
+
+        .lang-button {
+            padding: 10px 15px;
+            margin: 5px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            color: white;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .lang-button:hover {
+            opacity: 0.8;
+        }
+
+        .lang-en { background: #333; }
+        .lang-de { background: #007bff; }
+        .lang-it { background: #28a745; }
+        .lang-el { background: #d9534f; }
+
+    </style>
 </head>
 <body>
-    <h2 id="title">Contact Us</h2>
-    <p><strong id="phone-label">Phone:</strong> <a id="phone"></a></p>
-    <p><strong id="email-label">Email:</strong> <a id="email"></a></p>
-    <p><strong id="website-label">Website:</strong> <a id="website"></a></p>
 
-    <h3>Select Language:</h3>
-    <button onclick="setLanguage('en')">English 🇬🇧</button>
-    <button onclick="setLanguage('de')">Deutsch 🇩🇪</button>
-    <button onclick="setLanguage('it')">Italiano 🇮🇹</button>
-    <button onclick="setLanguage('el')">Ελληνικά 🇬🇷</button>
+    <div class="container">
+        <h2 id="title">Contact Us</h2>
+        <div class="contact-info">
+            <p><strong id="phone-label">Phone:</strong> <a id="phone" class="contact-link phone"></a></p>
+            <p><strong id="email-label">Email:</strong> <a id="email" class="contact-link email"></a></p>
+            <p><strong id="website-label">Website:</strong> <a id="website" class="contact-link website"></a></p>
+        </div>
+
+        <h3>🌍 Select Language:</h3>
+        <div class="lang-buttons">
+            <button class="lang-button lang-en" onclick="setLanguage('en')">English 🇬🇧</button>
+            <button class="lang-button lang-de" onclick="setLanguage('de')">Deutsch 🇩🇪</button>
+            <button class="lang-button lang-it" onclick="setLanguage('it')">Italiano 🇮🇹</button>
+            <button class="lang-button lang-el" onclick="setLanguage('el')">Ελληνικά 🇬🇷</button>
+        </div>
+    </div>
 
     <script>
         // Get URL parameters
@@ -79,5 +164,6 @@
         // Apply initial language setting
         applyTranslations();
     </script>
+
 </body>
 </html>
