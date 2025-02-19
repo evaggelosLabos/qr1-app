@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        h2 {
+            color: #333;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .contact-link {
+            display: block;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            color: white;
+            font-weight: bold;
+        }
+        .phone { background: #28a745; }
+        .email { background: #007bff; }
+        .website { background: #fd7e14; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Contact Us</h2>
+        <a id="phone" class="contact-link phone" style="display:none"></a>
+        <a id="email" class="contact-link email" style="display:none"></a>
+        <a id="website" class="contact-link website" style="display:none" target="_blank"></a>
+    </div>
+
+    <script>
+        // Read URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const phone = urlParams.get("phone");
+        const email = urlParams.get("email");
+        const website = urlParams.get("website");
+
+        // Dynamically update contact info
+        if (phone) {
+            document.getElementById("phone").innerText = `📞 Call Us: ${phone}`;
+            document.getElementById("phone").href = `tel:${phone}`;
+            document.getElementById("phone").style.display = "block";
+        }
+
+        if (email) {
+            document.getElementById("email").innerText = `✉️ Email Us: ${email}`;
+            document.getElementById("email").href = `mailto:${email}`;
+            document.getElementById("email").style.display = "block";
+        }
+
+        if (website && website.startsWith("http")) {
+            document.getElementById("website").innerText = `🌍 Visit Website`;
+            document.getElementById("website").href = website;
+            document.getElementById("website").style.display = "block";
+        }
+    </script>
+</body>
+</html>
