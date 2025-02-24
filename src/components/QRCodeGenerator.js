@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { QRCodeCanvas } from "qrcode.react";
 
 const QRCodeGenerator = () => {
-  const [phone, setPhone] = useState("+306945474102");
-  const [email, setEmail] = useState("info@yourcompany.com");
-  const [website, setWebsite] = useState("https://autoplan.gr/el/");
+  const [phone, setPhone] = useState("+306978485232",
+    +302661099480
+  );
+  const [email, setEmail] = useState("info@autoplancorfu.gr");
+  const [website, setWebsite] = useState("https://autoplancorfu.gr/");
 
   // Use your Render deployment URL
   const deployedURL = "https://qr1-app.onrender.com";
